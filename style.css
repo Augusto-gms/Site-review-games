@@ -1,0 +1,307 @@
+/*
+ * Estilo sóbrio e convidativo (Modo Profissional Escuro)
+ * NOVA PALETA: Baseada em tecnologia e neon (Azul Marinho, Roxo Neon, Azul Elétrico, Verde Esmeralda)
+ */
+
+/* -------------------------------------------------------------------------- */
+/* IMPORTAÇÃO DA FONTE PIXEL ART (REMOVIDA) */
+/* -------------------------------------------------------------------------- */
+/* Usando fonte padrão 'Inter' */
+
+
+/* -------------------------------------------------------------------------- */
+/* Variáveis e Global */
+/* -------------------------------------------------------------------------- */
+:root {
+    /* NOVO: Roxo Neon (Destaque Principal) */
+    --primary-color: #7B40A5; 
+    /* NOVO: Azul Marinho Escuro (Fundo principal) */
+    --secondary-color: #0F1122; 
+    /* MANTIDO: Azul Escuro Médio (Fundo de cards e formulários) - Mantido próximo para contraste sutil */
+    --tertiary-color: #1A1D39; 
+    /* NOVO: Azul Elétrico (Destaque de Ação e Botões) */
+    --accent-color: #1E90FF; 
+    /* NOVO: Verde Esmeralda (Pontuação, Sucesso) */
+    --success-color: #00D28F;
+    
+    --text-light: #E0E0E0; /* Texto Primário mais claro para maior contraste */
+    --text-gray: #B0B0C0; /* Texto Secundário ajustado */
+    /* NOVO: Amarelo Ouro (Estrelas, Troféus) */
+    --star-color: #FFD700; 
+}
+
+body {
+    background-color: var(--secondary-color) !important; /* Cor de base (Azul Marinho) */
+    background-image: none !important; /* Desabilita o background padrão para usar o pseudo-elemento */
+    color: var(--text-light) !important;
+    font-family: 'Inter', sans-serif !important;
+    line-height: 1.6 !important;
+    padding-top: 50px; 
+    position: relative; 
+    font-size: 16px; 
+}
+
+.card-text, .form-label, .small, .rodape p, .offcanvas-comments-list li {
+    font-size: 0.875rem !important; /* Padrão legível */
+}
+
+/* -------------------------------------------------------------------------- */
+/* EFEITO DE FUNDO DESFOCADO */
+/* -------------------------------------------------------------------------- */
+
+/* 1. Pseudo-elemento ::before: Imagem de Fundo Desfocada */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('fundo.jpg'); 
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    z-index: -2; /* Fundo mais recuado */
+    filter: blur(8px); /* Efeito de desfoque */
+    transform: scale(1.02); 
+}
+
+/* 2. Pseudo-elemento ::after: Camada Escura de Contraste */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Overlay escuro semi-transparente para aumentar o contraste (baseado na nova cor secundária) */
+    background: rgba(15, 17, 34, 0.85); 
+    z-index: -1; 
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header e Navegação (Ajustado para o blur) */
+/* -------------------------------------------------------------------------- */
+.logo {
+    /* Cor de fundo do cabeçalho (Azul Marinho Escuro semi-transparente) */
+    background-color: rgba(15, 17, 34, 0.95) !important; 
+    border-bottom: 1px solid var(--tertiary-color) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6) !important;
+    position: fixed !important;
+    width: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1000 !important; 
+    padding: 1rem 2rem !important;
+}
+
+h1 {
+    color: var(--primary-color) !important; /* Roxo Neon */
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-shadow: none !important;
+    font-size: 1.5rem; 
+}
+
+.menu a {
+    color: var(--text-light) !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 8px !important; 
+    transition: all 0.2s ease-in-out !important;
+    font-size: 1rem; 
+}
+
+.menu a:hover {
+    color: var(--accent-color) !important; /* Azul Elétrico no Hover */
+    /* Fundo semi-transparente do Azul Elétrico */
+    background-color: rgba(30, 144, 255, 0.1) !important; 
+    text-decoration: none !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Conteúdo Principal (MAIN) */
+/* -------------------------------------------------------------------------- */
+main.container {
+    background-color: transparent !important; 
+    position: relative; 
+    z-index: 1; 
+}
+
+/* Estilo para o banner de largura total */
+.full-width-banner {
+    width: 100%;
+    margin-top: 56px; 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7); 
+    overflow: hidden; 
+    border-bottom: 2px solid var(--primary-color); /* Roxo Neon */
+    border-radius: 0 0 8px 8px !important; 
+}
+
+.full-width-banner img {
+    max-height: 550px; 
+    object-fit: cover; 
+    display: block; 
+}
+
+/* -------------------------------------------------------------------------- */
+/* SIDEBAR (OFFCANVAS) - Ajustes e Formulário */
+/* -------------------------------------------------------------------------- */
+.offcanvas-header {
+    background-color: var(--tertiary-color) !important;
+    border-bottom: 1px solid var(--primary-color) !important; /* Roxo Neon */
+}
+
+.offcanvas-body {
+    background-color: var(--secondary-color) !important; /* Azul Marinho Escuro */
+}
+
+.offcanvas-body h5, .offcanvas-body .offcanvas-section-title {
+    color: var(--primary-color) !important; /* Roxo Neon */
+    font-weight: 600 !important;
+    /* Linha baseada no Roxo Neon transparente */
+    border-bottom: 1px solid rgba(123, 64, 165, 0.3); 
+    padding-bottom: 5px;
+    font-size: 1.25rem; 
+}
+
+/* Estilo para os links do menu offcanvas */
+.offcanvas-body .list-group-item {
+    background-color: var(--secondary-color) !important;
+    border: none !important;
+    color: var(--text-light) !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+    font-size: 1rem; 
+}
+
+.offcanvas-body .list-group-item:hover {
+    background-color: var(--tertiary-color) !important;
+    color: var(--accent-color) !important; /* Azul Elétrico no Hover */
+}
+
+.offcanvas-body .list-group-item.review-action-item {
+    background-color: var(--accent-color) !important; /* Azul Elétrico (Botão de Ação) */
+    color: var(--secondary-color) !important;
+    font-weight: bold !important;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+/* Borda arredondada no offcanvas */
+.offcanvas {
+    border-radius: 8px 0 0 8px !important;
+}
+
+.offcanvas-body .list-group-item.review-action-item:hover {
+     /* Um Azul Elétrico mais claro no Hover */
+     background-color: #4C9AFF !important; 
+}
+
+/* Estilo para o formulário dentro do Offcanvas */
+#reviewFormCollapse {
+    background-color: var(--tertiary-color) !important;
+    /* Borda sutil do Azul Elétrico */
+    border: 1px solid rgba(30, 144, 255, 0.2) !important; 
+    border-radius: 8px !important;
+}
+
+#reviewFormCollapse .form-control {
+    background-color: var(--secondary-color) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+}
+
+/* Estilo para os Comentários Populares dentro do offcanvas */
+.offcanvas-comments-list li {
+    /* Fundo semi-transparente do Azul Elétrico */
+    background-color: rgba(30, 144, 255, 0.05) !important; 
+    border-left: 3px solid var(--accent-color) !important; /* Borda com Azul Elétrico */
+    margin-bottom: 8px !important;
+    padding: 8px !important;
+    border-radius: 8px !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Títulos e Elementos de Destaque */
+/* -------------------------------------------------------------------------- */
+.section-title {
+    color: var(--text-light) !important; 
+    font-weight: 600 !important;
+    border-bottom: 2px solid var(--primary-color) !important; /* Roxo Neon */
+    display: inline-block !important;
+    padding-bottom: 5px !important;
+    margin-bottom: 1.5rem !important;
+    text-shadow: none !important;
+    font-size: 1.75rem; 
+}
+
+/* A imagem do banner principal não deve ser desfocada */
+main .row img {
+    border: 1px solid var(--tertiary-color) !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 8px !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Cards de Review e Comunidades */
+/* -------------------------------------------------------------------------- */
+.card {
+    background-color: var(--tertiary-color) !important; /* Fundo de card */
+    /* Borda sutil do Roxo Neon */
+    border: 1px solid rgba(123, 64, 165, 0.2) !important; 
+    border-radius: 8px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease !important;
+    color: var(--text-light) !important; 
+}
+
+.card:hover {
+    transform: translateY(-3px) !important;
+    border-color: var(--primary-color) !important; /* Roxo Neon no Hover */
+    /* Sombra do hover com Roxo Neon */
+    box-shadow: 0 8px 15px rgba(123, 64, 165, 0.2) !important; 
+}
+
+.card-title {
+    font-size: 1.25rem; 
+    color: var(--primary-color) !important; /* Roxo Neon */
+}
+
+/* ATUALIZADO: Usando a nova cor de sucesso (Verde Esmeralda) */
+.badge.bg-success {
+    background-color: var(--success-color) !important; /* Verde Esmeralda */
+    color: var(--secondary-color) !important;
+    font-weight: 700 !important;
+    padding: 6px 10px !important;
+    border-radius: 8px !important;
+    font-size: 0.875rem; 
+}
+
+/* -------------------------------------------------------------------------- */
+/* Botões */
+/* -------------------------------------------------------------------------- */
+.btn-dark, .btn-primary {
+    background-color: var(--accent-color) !important; /* Azul Elétrico (Botões de Ação) */
+    border: none !important;
+    color: var(--secondary-color) !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+    font-size: 1rem; 
+}
+
+.btn-dark:hover, .btn-primary:hover {
+    background-color: #4C9AFF !important; /* Azul Elétrico mais claro no Hover */
+    transform: translateY(-1px) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Rodapé */
+/* -------------------------------------------------------------------------- */
+.rodape {
+    background-color: var(--tertiary-color) !important; 
+    border-top: 1px solid var(--primary-color) !important; /* Roxo Neon */
+    padding: 15px 0 !important;
+    color: var(--text-gray) !important;
+}
